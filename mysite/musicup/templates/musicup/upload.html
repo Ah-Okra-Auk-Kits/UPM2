@@ -1,0 +1,11 @@
+<!-- templates/upload.html -->
+{% extends 'musicup/base.html' %}
+
+{% block main_content %}
+  <h1>Upload Music</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+{% endblock %}

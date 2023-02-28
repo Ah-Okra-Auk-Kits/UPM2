@@ -1,0 +1,20 @@
+<!-- templates/home.html -->
+{% extends 'musicup/base.html' %}
+
+{% block main_content %}
+  <h1>Music</h1>
+  <ul>
+    {% for music in musics %}
+        <li>
+            {{ music.title }} by {{ music.artist }}
+            <audio controls src="{{ music.audio_file.url }}">Your browser does not support the audio element.
+            </audio>
+            <form method="post" action="{% url 'delete_music' music.pk %}" style="display: inline">
+                {% csrf_token %}
+                <button type="submit">Delete
+                </button>
+            </form>
+        </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
